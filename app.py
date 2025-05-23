@@ -62,12 +62,12 @@ def draw_row(pdf, col_widths, data, line_height=5):
         cell_width = col_widths[i]
         pdf.rect(x, y, cell_width, row_height)
 
-        for idx, line in enumerate(lines):
-            pdf.set_xy(x, y + idx * line_height)
-            pdf.cell(cell_width, line_height, line, ln=0)
-
+        text_y = y
+        for line in lines:
+            pdf.set_xy(x, text_y)
+            pdf.multi_cell(cell_width, line_height, line, border=0)
+            text_y += line_height
         pdf.set_xy(x + cell_width, y)
-
     pdf.set_xy(x_start, y_start + row_height)
 
 def draw_header(pdf, col_widths, headers, line_height=5):
