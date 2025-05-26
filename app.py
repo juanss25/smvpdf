@@ -69,7 +69,7 @@ def draw_header(pdf, col_widths, headers, line_height=5):
         y = pdf.get_y()
         pdf.set_draw_color(0, 0, 0)
         pdf.rect(x, y, col_widths[i], row_height, style='FD')
-        pdf.multi_cell(col_widths[i], line_height, header, border=0, align='C')
+        pdf.cell(col_widths[i], row_height, header, border=0, align='C')
         pdf.set_xy(x + col_widths[i], y)
 
     pdf.set_xy(x_start, y_start + row_height)
