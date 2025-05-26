@@ -63,11 +63,11 @@ def draw_header(pdf, col_widths, headers, line_height=5):
     pdf.set_text_color(0, 0, 0)
     pdf.set_font("Arial", 'B', 10)
     pdf.set_fill_color(46, 139, 87)
+    pdf.set_draw_color(0, 0, 0)
 
     for i, header in enumerate(headers):
         x = pdf.get_x()
         y = pdf.get_y()
-        pdf.set_draw_color(0, 0, 0)
         pdf.rect(x, y, col_widths[i], row_height, style='FD')
         pdf.cell(col_widths[i], row_height, header, border=0, align='C')
         pdf.set_xy(x + col_widths[i], y)
