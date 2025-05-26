@@ -113,8 +113,8 @@ if uploaded_file:
                 pdf.cell(0, 10, f"{empresa}", ln=True, align="C")
                 pdf.ln(15)
 
-                headers = ["APELLIDOS Y NOMBRES", "EMAIL", "PERFIL", "CARGOS", "FECHA INICIAL", "F. V. CERTIFICADO"]
-                col_widths = [50, 55, 42, 60, 35, 39]
+                headers = ["APELLIDOS Y NOMBRES", "EMAIL", "PERFIL", "CARGOS", "FECHA INICIAL"]
+                col_widths = [50, 55, 42, 60, 35]
 
                 draw_header(pdf, col_widths, headers, line_height=5)
                 pdf.set_font("Arial", '', 7)
@@ -125,8 +125,7 @@ if uploaded_file:
                         str(row["EMAIL"]),
                         str(row["PERFIL"]),
                         str(row["CARGOS"]).replace("<BR>", " / "),
-                        str(row["FECHA INICIAL"]),
-                        str(row.get("FECHA VENC CERTIFICADO", ""))
+                        str(row["FECHA INICIAL"])
                     ]
                     row_height = get_row_height(values, col_widths, line_height=5)
                     if pdf.get_y() + row_height > pdf.page_break_trigger:
