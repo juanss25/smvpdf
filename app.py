@@ -6,7 +6,7 @@ import zipfile
 import os
 
 st.set_page_config(page_title="Generador de PDFs en ZIP por Empresa", layout="centered")
-st.title("📄 Generador de PDFs agrupados por NCODIGOPJ y descargables en ZIP")
+st.title("📄 Generador de PDFs agrupados por NCODIGOPJ y descargables en ZIPss")
 
 uploaded_file = st.file_uploader("Sube el archivo Excel", type=["xlsx"])
 pdf_title_input = st.text_input("Ingresa el título que llevará cada PDF")
