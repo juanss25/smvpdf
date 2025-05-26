@@ -9,6 +9,23 @@ st.set_page_config(page_title="Generador de PDFs en ZIPss por Empresa", layout="
 st.markdown("<h2 style='text-align: center;'>📄 Generador de PDFs agrupados por NCODIGOPJ</h2>", unsafe_allow_html=True)
 custom_title = st.text_input("Título para cada PDF :", "")
 uploaded_file = st.file_uploader("", type=["xlsx"])
+def calculate_row_height(pdf, col_widths, data, line_height=5):
+    pdf.set_font("Arial", '', 9)
+    max_lines = 0
+    for i, text in enumerate(data):
+        max_chars = int(col_widths[i] / 2.5)
+        words = str(text).split()
+        lines = []
+        current_line = ""
+        for word in words:
+            if len(current_line + " " + word) <= max_chars:
+                current_line += " " + word if current_line else word
+            else:
+                lines.append(current_line)
+                current_line = word
+        lines.append(current_line)
+        max_lines = max(max_lines, len(lines))
+    return max_lines * line_height
 
 def draw_row(pdf, col_widths, data, line_height=5):
     x_start = pdf.get_x()
@@ -113,6 +130,12 @@ if uploaded_file and custom_title.strip():
                         str(row["CARGOS"]).replace("<BR>", " / "),
                         str(row["FECHA INICIAL"])
                     ]
+                    row_height = calculate_row_height(pdf, col_widths, values, line_height=5)
+
+                    # Si no hay espacio suficiente, saltamos de página y repetimos el encabezado
+                    if pdf.get_y() + row_height > pdf.page_break_trigger:
+                        pdf.add_page()
+                        draw_header(pdf, col_widths, headers, line_height=5)
                     draw_row(pdf, col_widths, values, line_height=5)
 
                 pdf_bytes = BytesIO(pdf.output(dest='S').encode('latin1'))
