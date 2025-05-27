@@ -7,7 +7,7 @@ import zipfile
 st.set_page_config(page_title="Generador de PDFs en ZIPss por Empresa", layout="centered")
 st.markdown(
     """
-    <div style="text-align: center;">
+    <div style="img-align: center;">
         <img src="logo_smv.png" width="150">
     </div>
     """,
