@@ -108,12 +108,12 @@ if uploaded_file and custom_title.strip():
                 pdf.add_page()
 
                 pdf.set_font("Arial", 'B', 15)
-                pdf.set_text_color(95, 158, 160)
+                pdf.set_text_color(0, 0, 0)
                 pdf.cell(0, 10, custom_title, ln=True, align="C")
                 pdf.ln(8)
                 pdf.set_font("Arial", 'B', 12)
-                pdf.set_text_color(0, 0, 0)
-                pdf.cell(0, 10, f"{empresa}", ln=True, align="L")
+                pdf.set_text_color(95, 158, 160)
+                pdf.cell(0, 10, f"{empresa.upper()}", ln=True, align="L")
                 pdf.ln(5)
 
                 headers = ["APELLIDOS Y NOMBRES", "EMAIL", "PERFIL", "CARGOS", "FECHA INICIAL"]
