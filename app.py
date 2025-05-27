@@ -109,8 +109,8 @@ if uploaded_file and custom_title.strip():
                 pdf.set_auto_page_break(auto=True, margin=15)
                 pdf.add_page()
                 
-                pdf.image("logo_smv.png", x=10, y=10, w=30)
-                pdf.ln(20)  # Espacio debajo del logo
+                #pdf.image("logo_smv.png", x=10, y=10, w=30)
+                #pdf.ln(20)  # Espacio debajo del logo
                 
                 pdf.set_font("Arial", 'B', 15)
                 pdf.set_text_color(0, 0, 0)
