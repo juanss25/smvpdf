@@ -5,7 +5,14 @@ from io import BytesIO
 import zipfile
 
 st.set_page_config(page_title="Generador de PDFs en ZIPss por Empresa", layout="centered")
-st.image("logo_smv.png", width=150)
+st.markdown(
+    """
+    <div style="text-align: center;">
+        <img src="logo_smv.png" width="150">
+    </div>
+    """,
+    unsafe_allow_html=True
+)
 st.markdown("<h2 style='text-align: center;'>📄 Generador de PDFs agrupados por NCODIGOPJ</h2>", unsafe_allow_html=True)
 custom_title = st.text_input("Título para cada PDF :", "")
 uploaded_file = st.file_uploader("", type=["xlsx"])
