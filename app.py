@@ -65,10 +65,15 @@ def draw_row(pdf, col_widths, data, line_height=5):
         y = pdf.get_y()
         cell_width = col_widths[i]
         pdf.rect(x, y, cell_width, row_height)
-
+        #
+        text_block_height = len(lines) * line_height
+        y_offset = (row_height - text_block_height) / 2
+        
         for idx, line in enumerate(lines):
-            pdf.set_xy(x, y + idx * line_height)
-            pdf.cell(cell_width, line_height, line, ln=0)
+            #pdf.set_xy(x, y + idx * line_height)
+            #pdf.cell(cell_width, line_height, line, ln=0)
+            pdf.set_xy(x, y + y_offset + idx * line_height)
+            pdf.cell(cell_width, line_height, line, ln=0, align='C')  # Alineación horizontal centrada
 
         pdf.set_xy(x + cell_width, y)
 
